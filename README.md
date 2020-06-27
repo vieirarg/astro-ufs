@@ -2,7 +2,7 @@
 
 Bem-vind@s!
 
-Este repositório é dedicado à Astrofísica com Python!
+Este repositório é dedicado à exemplos de Astrofísica com Python!
 
 Ele reune alguns códigos simples, que complementam o conteúdo das disciplinas que ofereço no Departamento de Física da Universidade Federal de Sergipe.
 
