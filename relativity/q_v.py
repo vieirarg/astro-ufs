@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 '''
 Electric field charge uniform movement
+plots in figs/ folder
 '''
 import os
 import numpy as np
@@ -36,7 +37,7 @@ mpl.rcParams['mathtext.fontset'] = 'stix'
 mpl.rcParams['font.family'] = 'STIXGeneral'
 mpl.rcParams['font.size'] = 14
 
-# clean or create figs/ folder
+# create figs/ folder
 if not os.path.isdir('figs/'):
     out = os.system('mkdir figs')
 
@@ -63,6 +64,7 @@ plt.xlabel(r'$t\,[\mathrm{s}]$', fontsize=16)
 plt.ylabel(r'$\mathbf{E}(t)\,[\mathrm{statvolt\,cm^{-1}}]$', fontsize=16)
 plt.grid()
 plt.title(r'$q = {:.1f}\,\mathrm{{esu}}, \beta = {:.1f}, b = {:.1f}\,\mathrm{{cm}}$'.format(q, bet, b))
+print('Saving E(t) in figs/Et.png')
 plt.savefig('figs/Et.png', dpi=100, bbox_inches='tight')
 plt.close()
 
@@ -82,6 +84,7 @@ Ex, Ey = np.zeros([N, N]), np.zeros([N, N])
 xx = np.linspace(0.001, 1, 50)
 bet_arr = 1. - np.exp(-5*xx)
 t = 0
+print('Computing field frames for Ex/Ey animation')
 for k, bet in enumerate(bet_arr):
     for i, j in prod(range(N), range(N)):
         Ex[i, j], Ey[i, j] = electric_field(q, XX[i, j], YY[i, j], t, bet)
@@ -123,6 +126,7 @@ for k, bet in enumerate(bet_arr):
     plt.savefig('figs/Ey_{:02d}.png'.format(k+1), dpi=100, bbox_inches='tight', pad_inches=.2)
     plt.close()
 
+print('Saving field animations as figs/Ex.gif and figs/Ey.gif')
 out = os.system('convert -delay 20 -loop 0 figs/Ex_*.png figs/Ex.gif && rm figs/Ex_*.png')
 out = os.system('convert -delay 20 -loop 0 figs/Ey_*.png figs/Ey.gif && rm figs/Ey_*.png')
 
@@ -164,6 +168,7 @@ plt.xlabel(r'$\omega\,[\mathrm{s^{-1}}]$', fontsize=16)
 plt.ylabel(r'$\delta E_{\omega}/E_{\omega}\,[\mathrm{\%}]$', fontsize=16)
 plt.xscale('log')
 plt.title('Rybicki Eqs. 4.71 vs 4.72a')
+print('Saving E(w) comparison (integral result vs Bessel function) in figs/Ew_residuals.png')
 plt.savefig('figs/Ew_residuals.png', dpi=100, bbox_inches='tight')
 plt.close()
 
@@ -179,6 +184,7 @@ for b in [100, 200, 300, 400, 500]:
     dWdAdw = c * (q / (np.pi * b * v) * x1 * k1(x1))
     plt.plot(w, dWdAdw, label='b = {:} m'.format(b/100.))
 plt.legend()
+print('Savign Ew(b) in figs/dWdw_b.png')
 plt.savefig('figs/dWdw_b.png', dpi=100, bbox_inches='tight')
 plt.close()
 
@@ -195,6 +201,7 @@ for b in [100, 200, 300, 400, 500]:
     dWdAdw = c * (q / (np.pi * b * v) * x1 * k1(x1))
     plt.plot(w[keep], dWdAdw, label='b = {:} m'.format(b/100.))
 plt.legend()
+print('Savign Ew(b) zoom (low frequencies) in figs/dWdw_b_zoom.png')
 plt.savefig('figs/dWdw_b_zoom.png', dpi=100, bbox_inches='tight')
 plt.close()
 
@@ -219,5 +226,6 @@ plt.ylabel(r'$dW/d\omega\,[\mathrm{erg\,s}]$', fontsize=16)
 plt.title('Rybicki Eqs. 4.74b')
 plt.text(5e17, 1e-11, r'$\omega=\gamma v / b_{\mathrm{min}}$',\
          fontsize=16)
+print('Saving total spectrum in figs/dWdw.png')
 plt.savefig('figs/dWdw.png', dpi=100, bbox_inches='tight')
 plt.close()
