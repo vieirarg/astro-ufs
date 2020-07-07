@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 '''
+Relativistic charge emission
 Rybicki & Lightman, Section 4.8
 '''
 import numpy as np
@@ -10,6 +11,11 @@ import matplotlib as mpl
 mpl.rcParams['mathtext.fontset'] = 'stix'
 mpl.rcParams['font.family'] = 'STIXGeneral'
 mpl.rcParams['font.size'] = 14
+
+
+# create figs/ folder
+if not os.path.isdir('figs/'):
+    out = os.system('mkdir figs')
 
 # Eq. 4.98c
 # (2gam / (1+gam^2 theta^2))^4
