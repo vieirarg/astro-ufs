@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 '''
-Electric field charge uniform movement
+Electric field charge uniform motion
 plots in figs/ folder
 '''
 import os
