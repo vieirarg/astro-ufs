@@ -82,7 +82,7 @@ ax[1].set_xlabel(r'$\lambda\,[\mathrm{mm}]$', fontsize=16)
 ax[1].set_ylabel(r'$B_{\nu}(T, \theta)\,[\mathrm{erg\,s^{-1}\,ster^{-1}\,cm^{-1}}]$', fontsize=16)
 ax[1].set_title(r'$\beta=0.001$')
 plt.legend()
-plt.savefig('figs/bb.png', dpi=100, bbox_inches='tight')
+plt.savefig('figs/cmb_bb.png', dpi=100, bbox_inches='tight')
 plt.close()
 
 ##########
