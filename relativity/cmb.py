@@ -56,9 +56,6 @@ lmin, lmax = 100., 10e3
 Nl = 1000
 lbd = lmin * (lmax / lmin)**np.linspace(0, 1, Nl)
 
-
-bet = .1
-
 # nicer plot font
 mpl.rcParams['mathtext.fontset'] = 'stix'
 mpl.rcParams['font.family'] = 'STIXGeneral'
