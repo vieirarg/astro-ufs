@@ -65,8 +65,8 @@ mpl.rcParams['font.size'] = 14
 fig, ax = plt.subplots(nrows=1, ncols=2, sharey=True, figsize=(10, 5))
 bet = .1
 ax[0].plot(lbd/1e3, bb(lbd, T, bet, 0.), label=r'$\theta=0^{\circ}$')
-ax[0].plot(lbd/1e3, bb(lbd, T, bet, 90.), label=r'$\theta=90^{\circ}$')
-ax[0].plot(lbd/1e3, bb(lbd, T, bet, 180.), label=r'$\theta=180^{\circ}$')
+ax[0].plot(lbd/1e3, bb(lbd, T, bet, np.pi/2.), label=r'$\theta=90^{\circ}$')
+ax[0].plot(lbd/1e3, bb(lbd, T, bet, np.pi), label=r'$\theta=180^{\circ}$')
 ax[0].set_xscale('log')
 ax[0].set_xlabel(r'$\lambda\,[\mathrm{mm}]$', fontsize=16)
 ax[0].set_ylabel(r'$B_{\nu}(T, \theta)\,[\mathrm{erg\,s^{-1}\,ster^{-1}\,cm^{-1}}]$', fontsize=16)
