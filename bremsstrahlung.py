@@ -4,7 +4,7 @@ Plots related to the Bremsstrahlung emission
 
 References:
 Ghisellini p.26
-Rybicki Eqs. 5.10
+Rybicki Eqs. 5.4, 5.10
 '''
 import os
 import numpy as np
@@ -80,11 +80,25 @@ plt.savefig('figs/temperature_dep.png', dpi=100, bbox_inches='tight')
 plt.close()
 
 ###################
+# Rybick Eqs. 5.4
+
+x = np.linspace(-5, 5, 100)
+v = np.zeros(len(x))
+v[np.abs(x)-1.<0.] = 1.
+plt.plot(x, v, lw=3)
+plt.xlabel(r'$t/\tau$', fontsize=14)
+plt.ylabel(r'$\dot{v}\,[\mathrm{arbitrary\,units}]$', fontsize=14)
+ax = plt.gca()
+ax.axes.yaxis.set_ticks([])
+plt.savefig('figs/vdot.png', dpi=100, bbox_inches='tight')
+plt.close()
+
+###################
 # Rybick Eqs. 5.10
 
 x = np.linspace(.1, 2.5, 1000)
-plt.plot(x, 1/x, label=r'$\propto 1/v$')
-plt.plot(x, 1/x**2, label=r'$\propto 1/v^2$')
+plt.plot(x, 1/x, lw=3, label=r'$\propto 1/v$')
+plt.plot(x, 1/x**2, lw=3, label=r'$\propto 1/v^2$')
 plt.xlabel(r'$v/[4Ze^2/\pi h]$', fontsize=14)
 plt.ylabel(r'$b(v)\,[\mathrm{arbitrary\, units}]$', fontsize=14)
 plt.yscale('log')
