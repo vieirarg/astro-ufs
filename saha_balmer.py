@@ -30,16 +30,22 @@ mpl.rcParams['font.size'] = 14
 if not os.path.isdir('figs/'):
     out = os.system('mkdir figs')
 
+# parameters
 E12 = 10.2 * 1.6e-12 # eV to erg
 #E23 = 1.9 * 1.6e-12
 Eion = 13.6 * 1.6e-12
 T = np.linspace(1000, 20000, 5000)
 
+# statistical weights
 g1 = 2 * 1**2
 g2 = 2 * 2**2
 g3 = 2 * 3**2
 
+# n = n1 + n2 + ni
+# typical value stellar atmosphere
 n = 1e14
+
+# solutions
 alpha = g2/g1 * np.exp(-E12 / k / T)
 #alpha = g3/g2 * np.exp(-E23 / k / T)
 beta = (2. * pi * me * k * T / h**2)**1.5 * np.exp(-Eion / k / T)
@@ -47,6 +53,7 @@ ni = -beta/2. + np.sqrt((beta/2.)**2 + n * beta)
 n1 = (n - ni) / (1. + alpha)
 n2 = (n - ni) * alpha / (1. + alpha)
 
+# plot results
 plt.figure()
 plt.plot(T, n1 / n, lw=2, label=r'$n_1/n_{\mathrm{tot}}$')
 plt.plot(T, 1e5 * n2 / n, lw=2, label=r'$n_2/n_{\mathrm{tot}}\times 10^{5}$')
