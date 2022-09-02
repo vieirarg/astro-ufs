@@ -15,7 +15,6 @@ Carroll, Cap. 12, p. 415, Eq. 12.19
 import numpy as np
 import matplotlib.pyplot as plt
 
-
 G = 6.67259e-8
 Msun = 1.99e33
 pc = 3.086e18
@@ -50,7 +49,7 @@ xmin = 1e-5
 tlist = [t]
 xlist = [x]
 ulist = [u]
-while x>xmin:
+while x > xmin:
     t0, x0, u0 = t, x, u
     t, x = rk(t0, x0, h, dxdt, u0)
     t, u = rk(t0, u0, h, dudt, x0)
