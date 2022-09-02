@@ -10,7 +10,7 @@ x = r / r0
 tau = alpha * t
 alpha = np.sqrt(G * M / r0**3)
 
-Carroll, Cap. 12, p.458
+Carroll, Cap. 12, p. 415, Eq. 12.19
 '''
 import numpy as np
 import matplotlib.pyplot as plt
